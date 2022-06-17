@@ -1,0 +1,84 @@
+﻿@model brick_and_mortar_store.Models.Farmers
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Farmers</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FarmerName" class="control-label"></label>
+                <input asp-for="FarmerName" class="form-control" />
+                <span asp-validation-for="FarmerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerSurname" class="control-label"></label>
+                <input asp-for="FarmerSurname" class="form-control" />
+                <span asp-validation-for="FarmerSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerAge" class="control-label"></label>
+                <input asp-for="FarmerAge" class="form-control" />
+                <span asp-validation-for="FarmerAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerPhoneNo" class="control-label"></label>
+                <input asp-for="FarmerPhoneNo" class="form-control" />
+                <span asp-validation-for="FarmerPhoneNo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerEmail" class="control-label"></label>
+                <input asp-for="FarmerEmail" class="form-control" />
+                <span asp-validation-for="FarmerEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerPassword" class="control-label"></label>
+                <input asp-for="FarmerPassword" class="form-control" />
+                <span asp-validation-for="FarmerPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmerPicture" class="control-label"></label>
+                <input asp-for="FarmerPicture" class="form-control" />
+                <span asp-validation-for="FarmerPicture" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmName" class="control-label"></label>
+                <input asp-for="FarmName" class="form-control" />
+                <span asp-validation-for="FarmName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FarmAadress" class="control-label"></label>
+                <input asp-for="FarmAadress" class="form-control" />
+                <span asp-validation-for="FarmAadress" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="role" class="control-label"></label>
+                <input asp-for="role" class="form-control" />
+                <span asp-validation-for="role" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+              <label asp-for="role" class="control-label"></label>
+            <div class="col-md-10">
+            @Html.DropDownListFor(m => m.role, new SelectList(ViewBag.Roles, "Value", "Text"), new { @class = "form-control" })
+            </div>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

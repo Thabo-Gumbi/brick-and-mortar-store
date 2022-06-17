@@ -1,0 +1,89 @@
+﻿@model IEnumerable<brick_and_mortar_store.Models.Farmers>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Farmers Details</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerPhoneNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerPassword)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmerPicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FarmAadress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.role)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerPhoneNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerPassword)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmerPicture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FarmAadress)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.role)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.FarmersId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.FarmersId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.FarmersId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

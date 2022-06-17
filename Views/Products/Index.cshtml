@@ -1,0 +1,95 @@
+﻿@model IEnumerable<brick_and_mortar_store.Models.Products>
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Farmer Products</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<div class="col-sm-8 pull-right">
+            <div class="row">
+                <div class="pull-right">
+                    <button type="submit" name="submit" value="Search" class="btn btn-sm btn-primary">
+                        <span class="glyphicon glyphicon-search"></span> &nbsp; Search
+                    </button>
+                </div>
+                <div class="pull-right">
+                    @Html.Editor("search", new { htmlAttributes = new { @class = "form-control input-sm" } })
+                </div>
+            </div>
+        </div>
+    </div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductDescription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateAdded)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Farmers)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+               R  @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            <td>
+                @*<img src="@item.ProductPicture " width="100%" alt="Picture Of @item.ProductPicture>*@
+                @Html.DisplayFor(modelItem => item.ProductPicture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateAdded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Farmers.FarmerEmail)
+            </td>
+            <td>
+                 @if( User.IsInRole("Farmer"))
+                {
+                 <a asp-action="Edit" asp-route-id="@item.ProductsId">Edit</a> 
+                <a asp-action="Details" asp-route-id="@item.ProductsId">Details</a> 
+                <a asp-action="Delete" asp-route-id="@item.ProductsId">Delete</a>
+                }
+                else if( User.IsInRole("Employee"))
+                {
+                    <a asp-action="Details" asp-route-id="@item.ProductsId">Details</a> 
+                }
+                
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
